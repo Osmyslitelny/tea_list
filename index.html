@@ -19,6 +19,17 @@
     </head>
     <body>
 	<button id="white" onclick="createTable('белый')">белый</button>
+	<button id="white" onclick="createTable('желтый')">желтый</button>
+	<button id="white" onclick="createTable('зеленый')">зеленый</button>
+	<button id="white" onclick="createTable('габа')">габа</button>
+	<button id="white" onclick="createTable('тайваньский')">тайваньский</button>
+	<button id="white" onclick="createTable('гуандунские')">гуандунские</button>
+	<button id="white" onclick="createTable('уишаньский')">уишаньские</button>
+	<button id="white" onclick="createTable('южнофуцзянский')">южнофуцзянские</button>
+	<button id="white" onclick="createTable('красный')">красный</button>
+	<button id="white" onclick="createTable('шэн')">шэн</button>
+	<button id="white" onclick="createTable('шу')">шу</button>
+
       <div id="container"></div>
           <script type="text/javascript" charset="utf-8">
 
@@ -67,7 +78,6 @@ function sortBy(c) {
 }
 
 function createTable(fileName){
-	var div = document.getElementById('container');
     fetch(fileName)
     .then(response => response.text())
     .then(data => {
@@ -79,12 +89,10 @@ function createTable(fileName){
 
         var headers = ['name', 'mark']
         /* HEADERS */
-        output.push("<tr>")
         for (i = 0; i < headers.length; i++)
-                output.push("<th id=" + headers[i] + " onclick=\"sortBy(" + i + ")\">" +
-                headers[i].slice().split(",").join("</th><th>") +
-                "</th>");
-        output.push("</tr>")
+            output.push("<tr><th onclick=\"sortBy(" + i + ")\">" +
+                lines[0].slice().split(",").join("</th><th>") +
+                "</th></tr>");
         
 
         for (i = 0; i < lines.length - 1; i++)
@@ -94,9 +102,8 @@ function createTable(fileName){
 
         output = "<table id='sortable'><tbody>" +
             output.join("") + "</tbody></table>";
-        div.innerHTML = "<br>" + fileName.split(".")[0] + "</br>" + output;
+        div.innerHTML = "<br>" + fileName + "</br>" + output;
     });
-    document.getElementById("mark").click()
 }
     
     </script>
