@@ -90,10 +90,12 @@ function createTable(fileName){
 
         var headers = ['name', 'mark']
         /* HEADERS */
+        output.push("<tr>")
         for (i = 0; i < headers.length; i++)
-            output.push("<tr><th onclick=\"sortBy(" + i + ")\">" +
-                lines[0].slice().split(",").join("</th><th>") +
-                "</th></tr>");
+                output.push("<th id=" + headers[i] + " onclick=\"sortBy(" + i + ")\">" +
+                headers[i].slice().split(",").join("</th><th>") +
+                "</th>");
+        output.push("</tr>")
         
 
         for (i = 0; i < lines.length - 1; i++)
@@ -103,11 +105,13 @@ function createTable(fileName){
 
         output = "<table id='sortable'><tbody>" +
             output.join("") + "</tbody></table>";
-        div.innerHTML = "<br>" + fileName + "</br>" + output;
+        div.innerHTML = "<br>" + fileName.split(".")[0] + "</br>" + output;
     });
+    document.getElementById("mark").click()
 }
+
     createTable('красный')
-    </script>
+</script>
     
 
 
