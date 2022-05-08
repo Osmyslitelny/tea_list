@@ -67,6 +67,7 @@ function sortBy(c) {
 }
 
 function createTable(fileName){
+	var div = document.getElementById('container');
     fetch(fileName)
     .then(response => response.text())
     .then(data => {
